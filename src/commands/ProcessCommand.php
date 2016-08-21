@@ -1,6 +1,7 @@
 <?php namespace Resizer\Commands;
 
 use Resizer\Classes\Resize;
+use Resizer\Contracts\ResizeInterface;
 use Resizer\Models\Image;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -32,7 +33,7 @@ class ProcessCommand extends Command
         $progress->start();
 
         $test->each(function($item) use($progress){
-            $item->images = json_encode((new Resize)->resizeImage($item->original));
+            $item->images = $this->resize(new Resize, $item);
             $item->processed = true;
             $item->save();
             $progress->advance();
@@ -40,10 +41,11 @@ class ProcessCommand extends Command
 
 
         $progress->finish();
+    }
 
-
-        //var_dump($test);
-        //$output->writeln('<info>'.env('DB_PORT','10').'</info>');
+    protected function resize(ResizeInterface $resize, $item)
+    {
+        return json_encode($resize->resizeImage($item->original));
     }
 
 }

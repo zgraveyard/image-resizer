@@ -3,8 +3,9 @@
 use Illuminate\Config\Repository;
 use Illuminate\Support\Collection;
 use Intervention\Image\ImageManager;
+use Resizer\Contracts\ResizeInterface;
 
-class Resize
+class Resize implements ResizeInterface
 {
 
     public function resizeImage($imageURL)

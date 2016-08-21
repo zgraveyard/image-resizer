@@ -12,7 +12,9 @@ require __DIR__ .'/config/database.php';
 
 $app = new Application('Image resizer','1.0');
 
-$app->add(new SetupCommand);
-$app->add(new ProcessCommand);
+$app->addCommands([
+    new SetupCommand,
+    new ProcessCommand
+]);
 
 $app->run();
