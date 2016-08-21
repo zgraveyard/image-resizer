@@ -1,0 +1,24 @@
+{
+  "name": "zaher/image-resize",
+  "description": "This is just a small CLI app which will read an image table from the database and resize those images.",
+  "type": "project",
+  "require": {
+    "illuminate/config": "^5.2",
+    "illuminate/database": "^5.2",
+    "intervention/image": "^2.3",
+    "symfony/console": "^3.1",
+    "vlucas/phpdotenv": "v2.3.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mhd Zaher Ghaibeh",
+      "email": "z@zah.me"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Resizer\\": "src/"
+    }
+  }
+}

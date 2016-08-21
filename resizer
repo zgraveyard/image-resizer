@@ -1,0 +1,18 @@
+#! /usr/bin/env php
+
+<?php
+
+use Resizer\Commands\ProcessCommand;
+use Resizer\Commands\SetupCommand;
+use Symfony\Component\Console\Application;
+
+require __DIR__ .'/vendor/autoload.php';
+require __DIR__ .'/config/dotenv.php';
+require __DIR__ .'/config/database.php';
+
+$app = new Application('Image resizer','1.0');
+
+$app->add(new SetupCommand);
+$app->add(new ProcessCommand);
+
+$app->run();
